@@ -1,0 +1,14 @@
+/target/
+Cargo.lock
+
+/.idea/
+*.iml
+
+.DS_Store
+Thumbs.db
+
+.env
+*.pem
+*.key
+
+/tests/*.tmp
