@@ -1,10 +1,15 @@
 mod routes;
+mod state;
+mod file;
+mod errors;
 
 use axum::{response::Html, routing::get, Router};
 
 #[tokio::main]
 async fn main() {
-    // build our application with a route
+
+    let operating_system = std::env::consts::OS;
+
     let app = Router::new()
         .route("/", get(routes::root))
         .route("/health_check", get(routes::health_check));
@@ -14,6 +19,7 @@ async fn main() {
         .await
         .unwrap();
     println!("listening on {}", listener.local_addr().unwrap());
+    println!("Current OS: {}", std::env::consts::OS);
 
     axum::serve(listener, app).await;
 }
